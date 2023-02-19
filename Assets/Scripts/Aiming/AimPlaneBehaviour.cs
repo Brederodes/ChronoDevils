@@ -14,6 +14,8 @@ public class AimPlaneBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position= player.transform.position;
+        if(player!=null){
+            transform.position= new Vector3(player.transform.position.x, 0, player.transform.position.z);
+        }
     }
 }
