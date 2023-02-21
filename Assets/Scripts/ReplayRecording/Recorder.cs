@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Recorder : MonoBehaviour
 {
-    float timeAtStartOfReplaying;
+    //float timeAtStartOfReplaying;
     float timeAtStartOfRecording;
-    [SerializeField] public GameObject replayPrefab;
-    ReplayObject replayObject;
+    //[SerializeField] public GameObject replayPrefab;
+    //ReplayObject replayObject;
     ReplayFrameData frameDataBeingRecorded;
     public Queue<ReplayFrameData> replayBeingRecorded {get; private set;}
-    public Queue<ReplayFrameData> replayBeingReplayed {get; private set;}
-    public bool isDoingReplay= false;
+    //public Queue<ReplayFrameData> replayBeingReplayed {get; private set;}
+    //public bool isDoingReplay= false;
 
     void Awake(){
         replayBeingRecorded = new Queue<ReplayFrameData>();
@@ -20,18 +20,22 @@ public class Recorder : MonoBehaviour
     void Start()
     {
         timeAtStartOfRecording= Time.time;
-        GameEventManager.instance.onFinishReach+= onFinishReach;
-        GameEventManager.instance.onPlayerRespawn+= onPlayerRespawn;
+        //GameEventManager.instance.onFinishReach+= onFinishReach;
+        //GameEventManager.instance.onPlayerRespawn+= onPlayerRespawn;
     }
 
     void LateUpdate(){
-        if(isDoingReplay) return;
+        //if(isDoingReplay) return;
         //RECORDING GAMEPLAY
-        frameDataBeingRecorded = new ReplayFrameData(transform.position, transform.rotation, Time.time- timeAtStartOfRecording);
+        bool isAiming= GetComponent<PlayerAim>().isAiming;
+        Vector3 actualAimDirection= GetComponent<PlayerAim>().actualAimDirection;
+        bool shotThisFrame= GetComponent<PlayerShooter>().shotThisFrame;
+        frameDataBeingRecorded = new ReplayFrameData(Time.time- timeAtStartOfRecording, transform.position, transform.rotation, isAiming, actualAimDirection, shotThisFrame);
         recordReplayFrameData(frameDataBeingRecorded);
     }
     void Update(){
         //REPLAYING GAMEPLAY
+        /*
         if(isDoingReplay){
             if(playReplayFrame(replayObject)){
                 return;
@@ -39,9 +43,10 @@ public class Recorder : MonoBehaviour
             replayBeingReplayed= new Queue<ReplayFrameData>(replayBeingRecorded);
             startReplay();
         }
+        */
     }
 
-    private void startReplay(){
+    /*private void startReplay(){
         timeAtStartOfReplaying= Time.time;
         replayBeingReplayed= new Queue<ReplayFrameData>(replayBeingRecorded);
         if(isDoingReplay){
@@ -57,13 +62,13 @@ public class Recorder : MonoBehaviour
         timeAtStartOfRecording= Time.time;
         Destroy(replayObject.gameObject);
         replayBeingRecorded= new Queue<ReplayFrameData>();
-    }
+    }*/
     
     public void recordReplayFrameData(ReplayFrameData frameData){
         replayBeingRecorded.Enqueue(frameData);
         Debug.Log("Recorded data:" + frameData.framePosition + " " + frameData.frameRotation + " " + replayBeingRecorded.Count);
     }
-    private bool playReplayFrame(ReplayObject replayObject){
+    /*private bool playReplayFrame(ReplayObject replayObject){
         
         if(replayBeingReplayed.Count != 0){
             if(Time.time- timeAtStartOfReplaying < replayBeingReplayed.Peek().frameTime){
@@ -81,5 +86,5 @@ public class Recorder : MonoBehaviour
     }
     private void onFinishReach(){
         startReplay();
-    }
+    }*/
 }

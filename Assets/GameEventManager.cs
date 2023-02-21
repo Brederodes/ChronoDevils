@@ -7,6 +7,7 @@ public class GameEventManager : MonoBehaviour
     public event Action<GameObject> onChangeCameraTarget;
     public event Action onPlayerRespawn;
     public event Action onFinishReach;
+    public event Action onEndRound;
 
     private void Awake(){
         if(instance != null){
@@ -30,6 +31,11 @@ public class GameEventManager : MonoBehaviour
     public void finishReach(){
         if(onFinishReach != null){
             onFinishReach();
+        }
+    }
+    public void endRound(){
+        if(onEndRound != null){
+            endRound();
         }
     }
 }

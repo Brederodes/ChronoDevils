@@ -348,12 +348,19 @@
 "Assets/GameEventManager.cs"
 "Assets/Scripts/Aiming/AimPlaneBehaviour.cs"
 "Assets/Scripts/Camera/CameraFollow.cs"
+"Assets/Scripts/Damage/DamageDealer.cs"
+"Assets/Scripts/Damage/HealthMechanic.cs"
 "Assets/Scripts/Finish.cs"
+"Assets/Scripts/GameController/ObjectPool.cs"
 "Assets/Scripts/Player/PlayerAim.cs"
 "Assets/Scripts/Player/PlayerMove.cs"
+"Assets/Scripts/Player/PlayerShooter.cs"
+"Assets/Scripts/Projectile/ProjectileInfo.cs"
 "Assets/Scripts/ReplayRecording/Recorder.cs"
 "Assets/Scripts/ReplayRecording/ReplayFrameData.cs"
 "Assets/Scripts/ReplayRecording/ReplayObject.cs"
+"Assets/Scripts/SpikyEnemie/SpikyEnemyBehaviour.cs"
+"Assets/Timer.cs"
 -langversion:9.0
 
 /deterministic
