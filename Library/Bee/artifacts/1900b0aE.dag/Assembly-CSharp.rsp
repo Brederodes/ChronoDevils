@@ -356,9 +356,10 @@
 "Assets/Scripts/Player/PlayerMove.cs"
 "Assets/Scripts/Player/PlayerShooter.cs"
 "Assets/Scripts/Projectile/ProjectileInfo.cs"
-"Assets/Scripts/ReplayRecording/Recorder.cs"
-"Assets/Scripts/ReplayRecording/ReplayFrameData.cs"
-"Assets/Scripts/ReplayRecording/ReplayObject.cs"
+"Assets/Scripts/Replay/Recorder.cs"
+"Assets/Scripts/Replay/ReplayFrameData.cs"
+"Assets/Scripts/Replay/ReplayObject.cs"
+"Assets/Scripts/Replay/ReplayShooter.cs"
 "Assets/Scripts/SpikyEnemie/SpikyEnemyBehaviour.cs"
 "Assets/Timer.cs"
 -langversion:9.0

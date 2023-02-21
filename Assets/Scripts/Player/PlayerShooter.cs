@@ -21,16 +21,21 @@ public class PlayerShooter : MonoBehaviour
                 }
                 shotThisFrame= true;
                 shoot();
+                return;
             } else {
                 shotThisFrame= false;
+                return;
             }
+        } else {
+            shotThisFrame= false;
         }
-        shotThisFrame= false;
+        
     }
 
     void shoot(){
         nextPossibleShootingTime = Time.time + shootingCooldownDuration;
         GameObject projectile = projectilePool.GetPooledObject();
+        if(projectile== null) return;
         projectile.transform.position= transform.position;
         projectile.transform.rotation= transform.rotation;
 

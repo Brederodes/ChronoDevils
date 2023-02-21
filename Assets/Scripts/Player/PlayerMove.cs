@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Vector3 spawnPosition;
+    Quaternion spawnRotation;
     Rigidbody rigidBody;
     [SerializeField] float moveSpeed= 1f;
 
@@ -23,6 +25,9 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameEventManager.instance.onStartRound+= onStartRound;
+        spawnPosition= transform.position;
+        spawnRotation= transform.rotation;
         rigidBody= GetComponent<Rigidbody>();
     }
 
@@ -66,5 +71,9 @@ public class PlayerMove : MonoBehaviour
         } else {
             return true;
         }
+    }
+    void onStartRound(){
+        transform.position = spawnPosition;
+        transform.rotation = spawnRotation;
     }
 }

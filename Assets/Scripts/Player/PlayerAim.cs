@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    [SerializeField] private bool isAiming;
+    [SerializeField] public bool isAiming;
     Ray cameraRay;
     RaycastHit cameraHit;
     Vector3 cameraXZHitPoint;
-    Vector3 aimDirection;
+    public Vector3 aimDirection;
+    public Vector3 actualAimDirection;
     Quaternion lookAtQuaternion;
     [SerializeField] float aimSmoothness = 15f;
 
@@ -24,6 +25,7 @@ public class PlayerAim : MonoBehaviour
             aimDirection= cameraXZHitPoint - new Vector3(transform.position.x, 0, transform.position.z);
             lookAtQuaternion= Quaternion.LookRotation(aimDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookAtQuaternion, Time.deltaTime * aimSmoothness);
+            actualAimDirection= transform.forward;
         } else {
             isAiming= false;
         }

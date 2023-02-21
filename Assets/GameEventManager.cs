@@ -8,6 +8,7 @@ public class GameEventManager : MonoBehaviour
     public event Action onPlayerRespawn;
     public event Action onFinishReach;
     public event Action onEndRound;
+    public event Action onStartRound;
 
     private void Awake(){
         if(instance != null){
@@ -35,7 +36,12 @@ public class GameEventManager : MonoBehaviour
     }
     public void endRound(){
         if(onEndRound != null){
-            endRound();
+            onEndRound();
+        }
+    }
+    public void startRound(){
+        if(onStartRound != null){
+            onStartRound();
         }
     }
 }
