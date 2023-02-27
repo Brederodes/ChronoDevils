@@ -14,7 +14,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] float aimSmoothness = 15f;
 
     // Update is called once per frame
-    void Update(){
+    void LateUpdate(){
         if(Input.GetMouseButton(1)){
             cameraXZHitPoint= getXZHitPoint();
             if(cameraXZHitPoint.y != 0){

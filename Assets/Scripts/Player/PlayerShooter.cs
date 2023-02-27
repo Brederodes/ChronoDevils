@@ -13,21 +13,16 @@ public class PlayerShooter : MonoBehaviour
 
     void Update()
     {
+        shotThisFrame= false;
         if(playerAim.isAiming){
-            if(Input.GetMouseButtonDown(0)){
-                
+            if(Input.GetMouseButton(0)){
                 if(Time.time < nextPossibleShootingTime){
                     return;
                 }
                 shotThisFrame= true;
                 shoot();
                 return;
-            } else {
-                shotThisFrame= false;
-                return;
             }
-        } else {
-            shotThisFrame= false;
         }
         
     }
